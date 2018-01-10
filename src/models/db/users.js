@@ -11,7 +11,7 @@ const register = (firstName, lastName, username, hash) => {
 }
 
 const login = (username) => {
-  const findUser = 'SELECT first_name, password FROM users WHERE username = $1'
+  const findUser = 'SELECT * FROM users WHERE username = $1'
   return db.oneOrNone(findUser, username)
     .then((member) => {
       console.log('login', member)
