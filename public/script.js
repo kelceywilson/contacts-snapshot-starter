@@ -1,7 +1,7 @@
-document.addEventListener("DOMContentLoaded", function(event) {
+document.addEventListener('DOMContentLoaded', function(event) {
   console.log("DOM fully loaded and parsed");
 
-  var confirmDelete = function(event){
+  const confirmDelete = function(event){
     if (!confirm('Are you sure you want to delete this contact?')){
       event.preventDefault()
     }
@@ -11,18 +11,18 @@ document.addEventListener("DOMContentLoaded", function(event) {
     link.addEventListener("click", confirmDelete)
   })
 
-  var isBlank = function(value){
+  const isBlank = function(value){
     return !value || /^\s*$/.test(value)
   }
 
 
-  var newContactform = document.querySelector('.new-contact-form')
+  const newContactform = document.querySelector('.new-contact-form')
   if (newContactform){
     newContactform.addEventListener('submit', function(event){
-      var errors = []
+      const errors = []
 
-      var validateInput = function(name, humanizedName){
-        var input = newContactform.querySelector('input[name="'+name+'"]')
+      const validateInput = function(name, humanizedName){
+        const input = newContactform.querySelector('input[name="'+name+'"]')
         if (isBlank(input.value)){
           errors.push(humanizedName+' cannot be blank')
         }
@@ -37,5 +37,4 @@ document.addEventListener("DOMContentLoaded", function(event) {
       }
     })
   }
-
 });
