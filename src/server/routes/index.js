@@ -9,9 +9,10 @@ router.get('/', (req, res, next) => {
     .then((contacts) => {
       console.log('home', req.session.member)
       if(!req.session.member){
-        res.redirect('/users/login')
+        res.redirect('users/login')
       } else {
-        res.render('contacts/index', { contacts, member: req.session.member })
+        const role = req.session.role
+        res.render('contacts/index', { contacts, member: req.session.member, role })
       }
     })
     .catch(error => next(error))

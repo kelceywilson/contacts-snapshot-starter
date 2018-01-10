@@ -27,22 +27,28 @@ const findAll = function(){
     FROM
       contacts
     `, [])
-    .catch(error => {
-      console.error({message: 'Error occurred while executing contacts.findAll',
-                     arguments: arguments});
-      throw error});
+    .catch((error) => {
+      console.error({
+        message: 'Error occurred while executing contacts.findAll',
+        arguments: arguments
+      })
+      throw error
+    })
 }
 
 const findById = function(contactId){
-  return db.any(`
-    SELECT * FROM contacts WHERE id=$1::int LIMIT 1
-    `,
-    [contactId])
-    .then( contacts => contacts[0])
-    .catch(error => {
-      console.error({message: 'Error occurred while executing contacts.findById',
-                     arguments: arguments});
-      throw error});
+  return db.any('SELECT * FROM contacts WHERE id=$1::int LIMIT 1', [contactId])
+    .then((contacts) => {
+      console.log(contacts)
+      return contacts[0]
+    })
+    .catch((error) => {
+      console.error({
+        message: 'Error occurred while executing contacts.findById',
+        arguments: arguments
+      })
+      throw error
+    })
 }
 
 const destroy = function(contactId){

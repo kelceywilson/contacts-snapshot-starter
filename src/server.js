@@ -14,7 +14,8 @@ app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views')
 
 app.use(express.static('public'))
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json())
 
 app.use(methodOverride('_method'))
 

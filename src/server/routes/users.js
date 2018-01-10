@@ -51,7 +51,8 @@ router.post('/login', (req, res) => {
         } else if (bcrypt.compareSync(req.body.password, member.password)) {
           console.log('user/password match! member:', member.first_name)
           req.session.member = member.first_name
-          console.log(req.session.member);
+          req.session.role = member.role
+          console.log(req.session.role);
           res.redirect('/')
         } else {
           res.render('users/login', { error: 'Invalid username/password combo' })
